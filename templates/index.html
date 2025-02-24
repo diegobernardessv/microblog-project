@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microblog Project</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar__brand">
+            <img class="navbar__logo" src="/static/Dog_hacker_logo.jpg" alt="Microblog logo" />Microblog
+        </div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link"></a>Recentes</li>
+            <li class="navbar__navigation-item"><a href="#"></a class="navbar__link">Calendário</li>
+        </ul>
+    </header>
+    <main class="main">
+        <section>
+            <h1>Adicionar nova entrada :</h1>
+            <form class="form" method="POST">
+                <p class="form__input">
+                    <label for="entry" class="form__label">Adicionar entrada</label>
+                    <textarea name="content" id="entry" class="form__textarea"></textarea>
+                </p>    
+                <button type="submit" class="form__submit">Enviar</button>
+            </form>
+        </section>
+        <section>
+            <h1>Posts Recentes</h1>
+            {% for entry in entries %}
+            <article class="entry">
+                <div>
+                    <h2 class="entry__title">{{ entry[0]    |   truncate(30, true)    }}</h2>
+                    <time class="entry__date" datetime="{{ entry[1] }}">• {{ entry[2] }}</time>
+                </div>
+                <p class="entry__content">
+                    {{ entry[0] }}
+                </p>
+                
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left">
+                <a class="footer__item" href="https://www.linkedin.com/in/diego-bernardes-silva-a9780b302/">Desenvolvido por Diego Bernardes</a>
+                <a class="footer__item">Acesse meus outros projetos</a>
+            </section>
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item">Recentes</a>
+                    <a class="footer__item">Calendário</a>
+                </div>
+                <div class="footer__column">
+                    <a class="footer__item">Sobre</a>
+                    <a class="footer__item">Como este website foi feito</a>
+                </div>
+            </section>
+        </div>
+    </footer>
+    
+</body>
+</html>
